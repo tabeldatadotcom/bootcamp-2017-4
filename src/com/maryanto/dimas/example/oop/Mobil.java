@@ -5,7 +5,7 @@ public class Mobil extends Kendaraan{
     private String nama;
 
     public void setNama(String nama){
-        System.out.println(jumlahRoda);
+        System.out.println(super.getJumlahRoda());
         // tidak bisa di akses karena private
         //  System.out.println(pabrik);
        this.nama = nama ;
@@ -17,7 +17,7 @@ public class Mobil extends Kendaraan{
     }
 
     public void setNama(){
-        System.out.println(jumlahRoda);
+        System.out.println(super.getJumlahRoda());
         // tidak bisa di akses karena private
         //  System.out.println(pabrik);
        this.nama = "Mitshubitsi" ;
