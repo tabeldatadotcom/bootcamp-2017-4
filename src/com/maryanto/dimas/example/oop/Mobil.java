@@ -11,14 +11,32 @@ public class Mobil extends Kendaraan{
        this.nama = nama ;
     }
 
+    // @Overload
+    public String getNamaPabrik(){
+        return super.getNamaPabrik();
+    }
+
+    public void setNama(){
+        System.out.println(jumlahRoda);
+        // tidak bisa di akses karena private
+        //  System.out.println(pabrik);
+       this.nama = "Mitshubitsi" ;
+    }
+
     public String nama(){
         return this.nama;
     }
 
     public static void main(String[] args){
         Mobil honda = new Mobil();
-        honda.setNama("Honda civic");
-
+        honda.setNama();
         System.out.println(honda.nama());
+        honda.setNama("Honda Civic");
+        System.out.println(honda.nama());
+
+        honda.setNamaPabrik("Astra Honda");
+        System.out.println(
+            String.format("nama pabrik %s", honda.getNamaPabrik())
+        );
     }
 }
