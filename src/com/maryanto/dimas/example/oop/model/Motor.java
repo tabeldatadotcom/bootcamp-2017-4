@@ -4,6 +4,10 @@ import com.maryanto.dimas.example.oop.Kendaraan;
 
 public class Motor extends Kendaraan{
 
+    public Motor(){
+        super(4);
+    }
+
     public String getNamaPabrik(){
         return "Yamaha";
     }

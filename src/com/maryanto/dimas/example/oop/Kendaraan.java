@@ -2,6 +2,10 @@ package com.maryanto.dimas.example.oop;
 
 public class Kendaraan{
 
+    public Kendaraan(Integer jumlahRoda){
+        this.jumlahRoda = jumlahRoda;
+    }
+
     private Integer jumlahRoda = 4;
     private String pabrik;
 

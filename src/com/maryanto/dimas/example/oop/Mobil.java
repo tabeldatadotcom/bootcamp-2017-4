@@ -2,6 +2,19 @@ package com.maryanto.dimas.example.oop;
 
 public class Mobil extends Kendaraan{
 
+    public Mobil(){
+        super(4);
+        System.out.println("ini contruktur di pangil ketika di inisialiasi");
+    }
+
+    public Mobil(String nama){
+        super(5);
+        this.nama = nama;
+        System.out.println(
+            String.format("variable nama berisi %s", this.nama)
+        );
+    }
+
     private String nama;
 
     public void setNama(String nama){
@@ -28,7 +41,7 @@ public class Mobil extends Kendaraan{
     }
 
     public static void main(String[] args){
-        Mobil honda = new Mobil();
+        Mobil honda = new Mobil("Lamborgini");
         honda.setNama();
         System.out.println(honda.nama());
         honda.setNama("Honda Civic");
