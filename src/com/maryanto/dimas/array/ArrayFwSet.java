@@ -35,8 +35,15 @@ public class ArrayFwSet{
         );
 
         System.out.println("--------------");
+
+        // foreach pada umumnya
         for(Object obj2 : siswa){
             System.out.println(obj2);
         }
+
+        // foreach lambda expresion 
+        // siswa.forEach((nilai) -> {
+        //     System.out.println(nilai);
+        // });
     }
 }
