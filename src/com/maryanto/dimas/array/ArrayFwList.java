@@ -11,6 +11,7 @@ public class ArrayFwList{
         values.add("Dimas Maryanto");
         values.add(1);
         values.add(false);
+        values.add(false);
         values.add(true);
         values.add('A');
         values.add(100f);
