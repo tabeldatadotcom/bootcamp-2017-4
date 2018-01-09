@@ -11,7 +11,13 @@ public class PrimitifArray{
         };
 
         System.out.println(
-            "peserta bootcamp index ke 2 adalah "+ pesertaBootcamp[2]
+            String.format(
+                "peserta bootcamp index ke 2 adalah %s ",pesertaBootcamp[2]
+            )
         );
+
+        for(int i = 0; i < pesertaBootcamp.length; i++){
+            System.out.print(pesertaBootcamp[i]+ ", ");
+        }
     }
 }
