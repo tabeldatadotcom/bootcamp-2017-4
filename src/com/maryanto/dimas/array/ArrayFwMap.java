@@ -7,7 +7,7 @@ public class ArrayFwMap{
     
     public static void main(String[] args){
         Map berkas = new HashMap();
-        berkas.put("laporan2017", "asldkfjasdljfksdjf");
+        berkas.put("laporan2017", null);
         berkas.put("laporan2018", "laksdjfklasdlfkjsdakfj");
 
         System.out.println(berkas.get("laporan2018"));
