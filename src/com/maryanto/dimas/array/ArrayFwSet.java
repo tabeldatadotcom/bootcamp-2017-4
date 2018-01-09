@@ -14,11 +14,16 @@ public class ArrayFwSet{
         siswa.add(1);
         siswa.add(2);
 
-        siswa.remove(2);
-
         System.out.println(
             String.format(
                 "jumlah array di set adalah %s", siswa.size()
+            )
+        );
+        
+        siswa.remove(2);
+        System.out.println(
+            String.format(
+                "jumlah array selelah dihapus adalah %s", siswa.size()
             )
         );
 
