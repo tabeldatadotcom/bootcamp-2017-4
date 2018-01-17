@@ -1,2 +1,12 @@
 bin/
+# eclipse project
+.project
+.settings/
+.classpath
+
+# mac
 .DS_Store
+
+# maven project
+target/
+
