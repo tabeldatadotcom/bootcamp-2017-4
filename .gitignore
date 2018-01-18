@@ -10,3 +10,7 @@ bin/
 # maven project
 target/
 
+# jetbraint
+.idea/
+*.iml
+
