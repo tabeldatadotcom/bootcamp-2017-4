@@ -31,9 +31,13 @@ public class AplikasiUtama {
             DepartmentDao dao = new DepartmentDao(connection);
 
 //            save nilai department
-            dao.save(new Department(3003, "Sistem Analis", 1000, null));
+            dao.save(new Department(null, "Sistem Analis", 1000, null));
+            
+            dao.save(new Department(null, "Sistem Analis", 1000, null));
             // error karena duplikate primary
-            dao.save(new Department(3004, "Sistem Analis", 1000, null));
+            dao.update(new Department(3004, "Sistem Analis", 1000, null));
+            dao.delete(3003);
+            
 
 //            untuk ambil nilainya
             List<Department> daftarDepartment = dao.findAll();
@@ -50,7 +54,7 @@ public class AplikasiUtama {
                     connection.rollback();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AplikasiUtama.class.getName()).log(Level.SEVERE, null, ex);
+               ex.printStackTrace();
             }
         }
     }
