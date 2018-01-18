@@ -31,11 +31,11 @@ public class AplikasiUtama {
             DepartmentDao dao = new DepartmentDao(connection);
 
 //            save nilai department
-            dao.save(new Department(null, "Sistem Analis", 1000, null));
+            Department departmentBaru = dao.save(new Department(null, "Sistem Analis", 1000, null));
+            System.out.println(departmentBaru.toString());
             
             dao.save(new Department(null, "Sistem Analis", 1000, null));
-            // error karena duplikate primary
-            dao.update(new Department(3004, "Sistem Analis", 1000, null));
+            
             dao.delete(3003);
             
 
