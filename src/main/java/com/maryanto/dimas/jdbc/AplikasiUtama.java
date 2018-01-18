@@ -1,5 +1,6 @@
 package com.maryanto.dimas.jdbc;
 
+import com.maryanto.dimas.jdbc.entity.Department;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,25 +22,25 @@ public class AplikasiUtama {
             Connection connection = ds.getConnection();
             System.out.println("berhasil koneksi ke database");
             
-            String sqlInsert = "insert into departments (department_id, department_name) values (?, ?) ";
-            PreparedStatement preparedStatement = connection.prepareCall(sqlInsert);
-            preparedStatement.setInt(1, 1001);
-            preparedStatement.setString(2, "Presenter");
+            String sqlInsert = "insert into departments (department_id, department_name, location_id) values (?, ?, ?) ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert);
+            preparedStatement.setInt(1, 1005);
+            preparedStatement.setString(2, "Publisher");
+            preparedStatement.setInt(3, 1000);
             preparedStatement.executeUpdate();
-            
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from departments");
 
 //            untuk mengambil data perbaris
-            while (resultSet.next()) {
-                Integer departmentId = resultSet.getInt("department_id");
-                String departmentName = resultSet.getString("department_name");
-                Integer managerId = resultSet.getInt(3);
-
-                System.out.println(
-                        String.format("{ departmentId : %s, departmentName : %s, managerId : %s }",
-                                departmentId, departmentName, managerId));
+            while (resultSet.next()) {                
+                Department dep = new Department(
+                        resultSet.getInt("department_id"), 
+                        resultSet.getString("department_name"), 
+                        resultSet.getInt(3),
+                        resultSet.getInt(4)
+                );
+                System.out.println(dep.toString());
             }
 
             // menutup koneksi ke database
