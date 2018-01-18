@@ -1,6 +1,7 @@
 package com.maryanto.dimas.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,6 +20,13 @@ public class AplikasiUtama {
             // membuka koneksi ke database
             Connection connection = ds.getConnection();
             System.out.println("berhasil koneksi ke database");
+            
+            String sqlInsert = "insert into departments (department_id, department_name) values (?, ?) ";
+            PreparedStatement preparedStatement = connection.prepareCall(sqlInsert);
+            preparedStatement.setInt(1, 1001);
+            preparedStatement.setString(2, "Presenter");
+            preparedStatement.executeUpdate();
+            
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from departments");
@@ -35,11 +43,13 @@ public class AplikasiUtama {
             }
 
             // menutup koneksi ke database
+            preparedStatement.close();
             resultSet.close();
             statement.close();
             connection.close();
         } catch (SQLException sqle) {
             System.err.printf("tidak dapat koneksi ke databas!");
+            sqle.printStackTrace();
         }
     }
 
