@@ -1,7 +1,9 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.Agama;
+import com.tabeldata.bpr.entity.master.Pendidikan;
 import com.tabeldata.bpr.service.AgamaService;
+import com.tabeldata.bpr.service.PendidikanService;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,9 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     @Autowired
     private AgamaService agamaService;
+
+    @Autowired
+    private PendidikanService pendidikanService;
 
     @Test
     public void contextLoads() {
@@ -39,6 +44,12 @@ public class AplikasiBprApplicationTests extends TestCase {
         daftarAgama = agamaService.findAll();
         assertEquals(daftarAgama.size(), 0);
 
+    }
+
+    @Test
+    public void testPendidikan(){
+        List<Pendidikan> daftarPendidikan = pendidikanService.findAll();
+        assertEquals(daftarPendidikan.size(), 3);
     }
 
 }
