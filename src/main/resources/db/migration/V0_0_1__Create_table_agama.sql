@@ -8,10 +8,10 @@
  * Created: Feb 5, 2018
  */
 
-create table master_agama(
-    kode_agama character varying(255) not null primary key,
-    nama_agama character varying(50) not null unique,
-    deskripsi character varying (255),
-    created_date timestamp not null,
-    created_by character varying(50)
+CREATE TABLE master_agama (
+  kode_agama   CHARACTER VARYING(255) NOT NULL PRIMARY KEY,
+  nama_agama   CHARACTER VARYING(50)  NOT NULL UNIQUE,
+  deskripsi    CHARACTER VARYING(255),
+  created_date TIMESTAMP              NOT NULL,
+  created_by   CHARACTER VARYING(50)
 );
