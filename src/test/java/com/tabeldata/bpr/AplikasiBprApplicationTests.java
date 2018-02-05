@@ -15,27 +15,25 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AplikasiBprApplicationTests extends TestCase{
+public class AplikasiBprApplicationTests extends TestCase {
 
     @Autowired
-	private AgamaService agamaService;
+    private AgamaService agamaService;
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
-	@Test
-	public void testSimpanAgama(){
-		Agama islam = new Agama(null, "Islam", "Muslim",
-				Timestamp.valueOf(LocalDateTime.now()),"admin");
-		agamaService.save(islam);
+    @Test
+    public void testSimpanAgama() {
+        Agama islam = new Agama(null, "Islam", "Muslim", Timestamp.valueOf(LocalDateTime.now()), "admin");
+        agamaService.save(islam);
 
-		Agama kristen = new Agama(null, "Kristen", "Kristen Protestan",
-				Timestamp.valueOf(LocalDateTime.now()),"admin");
-		agamaService.save(kristen);
+        Agama kristen = new Agama(null, "Kristen", "Kristen Protestan", Timestamp.valueOf(LocalDateTime.now()), "admin");
+        agamaService.save(kristen);
 
         List<Agama> daftarAgama = agamaService.findAll();
-        assertEquals(daftarAgama.size(),2 );
+        assertEquals(daftarAgama.size(), 2);
 
         agamaService.delete(daftarAgama);
         daftarAgama = agamaService.findAll();
