@@ -40,4 +40,6 @@ public class PendidikanService {
     public void delete(List<Pendidikan> list){
         this.repo.delete(list);
     }
+
+
 }

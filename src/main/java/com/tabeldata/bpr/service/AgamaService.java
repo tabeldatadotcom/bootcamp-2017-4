@@ -50,4 +50,9 @@ public class AgamaService {
     public List<Agama> mencariBerdasarkanNamaAtauDeskripsi(String input){
         return this.repo.findByNamaOrDeskripsi(input, input);
     }
+
+    @Transactional(readOnly = false)
+    public void updateById(String id, String nama, String description){
+        this.repo.updateNamaAndDescription(nama, description, id);
+    }
 }
