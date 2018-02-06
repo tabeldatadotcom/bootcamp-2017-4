@@ -40,6 +40,13 @@ public class AplikasiBprApplicationTests extends TestCase {
         List<Agama> daftarAgama = agamaService.findAll();
         assertEquals(daftarAgama.size(), 2);
 
+        islam = agamaService.findByNama("Islam");
+        assertNotNull(islam);
+
+        List<Agama> daftarAgamaByNamaOrDesk =
+                agamaService.mencariBerdasarkanNamaAtauDeskripsi("Islam");
+        assertEquals(daftarAgamaByNamaOrDesk.size(), 1);
+
         agamaService.delete(daftarAgama);
         daftarAgama = agamaService.findAll();
         assertEquals(daftarAgama.size(), 0);
