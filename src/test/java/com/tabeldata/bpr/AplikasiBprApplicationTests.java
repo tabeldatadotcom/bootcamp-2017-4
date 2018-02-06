@@ -61,6 +61,8 @@ public class AplikasiBprApplicationTests extends TestCase {
 
         assertEquals(islam2.getNama(), "ISIS");
 
+        agamaService.deleteByName("i");
+
 //        agamaService.delete(daftarAgama);
 //        daftarAgama = agamaService.findAll();
 //        assertEquals(daftarAgama.size(), 0);
