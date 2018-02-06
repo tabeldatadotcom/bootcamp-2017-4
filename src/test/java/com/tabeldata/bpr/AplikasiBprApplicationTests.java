@@ -1,9 +1,12 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.Agama;
+import com.tabeldata.bpr.entity.master.KotaKabupaten;
 import com.tabeldata.bpr.entity.master.Pendidikan;
+import com.tabeldata.bpr.entity.master.Provinsi;
 import com.tabeldata.bpr.service.AgamaService;
 import com.tabeldata.bpr.service.PendidikanService;
+import com.tabeldata.bpr.service.WilayahService;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +27,9 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     @Autowired
     private PendidikanService pendidikanService;
+
+    @Autowired
+    private WilayahService wilayahService;
 
     @Test
     public void contextLoads() {
@@ -63,16 +69,28 @@ public class AplikasiBprApplicationTests extends TestCase {
 
         agamaService.deleteByName("i");
 
-//        agamaService.delete(daftarAgama);
-//        daftarAgama = agamaService.findAll();
-//        assertEquals(daftarAgama.size(), 0);
-
+        agamaService.delete(daftarAgama);
+        daftarAgama = agamaService.findAll();
+        assertEquals(daftarAgama.size(), 0);
     }
 
     @Test
     public void testPendidikan() {
         List<Pendidikan> daftarPendidikan = pendidikanService.findAll();
         assertEquals(daftarPendidikan.size(), 3);
+    }
+
+    @Test
+    public void testKotaProvinsi() {
+        List<Provinsi> daftarWilayah = this.wilayahService.findAllProvinsi();
+        assertEquals(2, daftarWilayah.size());
+
+        List<KotaKabupaten> daftarKota = this.wilayahService.findAllKotaKabupaten();
+        assertEquals(3, daftarKota.size());
+
+        daftarKota.forEach((k) -> {
+            System.out.println(k.toString());
+        });
     }
 
 }
