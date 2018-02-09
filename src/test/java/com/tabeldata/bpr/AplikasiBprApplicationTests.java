@@ -1,10 +1,8 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.*;
-import com.tabeldata.bpr.service.AgamaService;
-import com.tabeldata.bpr.service.PendidikanService;
-import com.tabeldata.bpr.service.UserService;
-import com.tabeldata.bpr.service.WilayahService;
+import com.tabeldata.bpr.repository.NasabahRepository;
+import com.tabeldata.bpr.service.*;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +26,8 @@ public class AplikasiBprApplicationTests extends TestCase {
     private WilayahService wilayahService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private NasabahService nasabahService;
 
     @Test
     public void contextLoads() {
@@ -111,6 +111,31 @@ public class AplikasiBprApplicationTests extends TestCase {
         UserSecurity dimas = this.userService.findByUsername("dimas");
         assertNotNull(dimas);
         assertEquals(1, dimas.getListRole().size());
+
+    }
+
+    @Test
+    public void testSimpanNasabah() {
+        NasabahPerorangan dimas = new NasabahPerorangan();
+        dimas.setNamaLengkap("Dimas Maryanto");
+        dimas.setJenisKelamin("L");
+        dimas.setNomorIdentitas("6212423408234");
+        dimas.setAlamat("Jl. Bukit indah no B8");
+        dimas = this.nasabahService.save(dimas);
+        assertNotNull(dimas.getId());
+
+        dimas = this.nasabahService.findPeroranganById(dimas.getId());
+        assertNotNull(dimas);
+        Nasabah bukan = this.nasabahService.findBadanUsahaById(dimas.getId());
+        assertNull(bukan);
+
+        NasabahBadanUsaha tabeldata = new NasabahBadanUsaha();
+        tabeldata.setNamaLengkap("Tabel Data Informatika");
+        tabeldata.setNomorNpwp("1242421423");
+        tabeldata.setAlamat("Jl. margawangi raya no 8");
+        tabeldata = this.nasabahService.save(tabeldata);
+        assertNotNull(tabeldata.getId());
+//        this.nasabahService.delete(tabeldata);
 
     }
 
