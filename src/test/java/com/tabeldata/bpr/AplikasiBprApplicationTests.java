@@ -22,10 +22,8 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     @Autowired
     private AgamaService agamaService;
-
     @Autowired
     private PendidikanService pendidikanService;
-
     @Autowired
     private WilayahService wilayahService;
     @Autowired
@@ -84,6 +82,10 @@ public class AplikasiBprApplicationTests extends TestCase {
     public void testKotaProvinsi() {
         List<Provinsi> daftarWilayah = this.wilayahService.findAllProvinsi();
         assertEquals(2, daftarWilayah.size());
+
+        Provinsi jawaBarat = this.wilayahService.findProvinsiById("001");
+        assertNotNull(jawaBarat);
+        assertEquals(2, jawaBarat.getListKota().size());
 
         List<KotaKabupaten> daftarKota = this.wilayahService.findAllKotaKabupaten();
         assertEquals(3, daftarKota.size());

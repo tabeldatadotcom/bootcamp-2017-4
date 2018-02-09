@@ -20,11 +20,15 @@ public class WilayahService {
     @Autowired
     private ProvinsiRepository propRepository;
 
-    public List<Provinsi> findAllProvinsi(){
+    public List<Provinsi> findAllProvinsi() {
         return this.propRepository.findAll();
     }
 
-    public List<KotaKabupaten> findAllKotaKabupaten(){
+    public List<KotaKabupaten> findAllKotaKabupaten() {
         return this.kotaRepository.findAll();
+    }
+
+    public Provinsi findProvinsiById(String id) {
+        return this.propRepository.findOne(id);
     }
 }

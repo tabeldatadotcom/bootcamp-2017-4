@@ -26,7 +26,7 @@ public class KotaKabupaten {
     private Timestamp createdDate;
     @Column(name = "created_by", length = 20)
     private String createBy;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "provinsi_id", nullable = false)
     private Provinsi provinsi;
 }
