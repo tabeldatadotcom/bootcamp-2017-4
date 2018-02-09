@@ -1,11 +1,9 @@
 package com.tabeldata.bpr;
 
-import com.tabeldata.bpr.entity.master.Agama;
-import com.tabeldata.bpr.entity.master.KotaKabupaten;
-import com.tabeldata.bpr.entity.master.Pendidikan;
-import com.tabeldata.bpr.entity.master.Provinsi;
+import com.tabeldata.bpr.entity.master.*;
 import com.tabeldata.bpr.service.AgamaService;
 import com.tabeldata.bpr.service.PendidikanService;
+import com.tabeldata.bpr.service.UserService;
 import com.tabeldata.bpr.service.WilayahService;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -30,6 +28,8 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     @Autowired
     private WilayahService wilayahService;
+    @Autowired
+    private UserService userService;
 
     @Test
     public void contextLoads() {
@@ -91,6 +91,25 @@ public class AplikasiBprApplicationTests extends TestCase {
         daftarKota.forEach((k) -> {
             System.out.println(k.toString());
         });
+    }
+
+    @Test
+    public void testUser() {
+
+        List<RoleSecurity> roles = this.userService.listRole();
+        assertEquals(2, roles.size());
+
+        List<UserSecurity> users = this.userService.findUser();
+        assertEquals(2, users.size());
+
+        UserSecurity admin = this.userService.findByUsername("admin");
+        assertNotNull(admin);
+        assertEquals(2, admin.getListRole().size());
+
+        UserSecurity dimas = this.userService.findByUsername("dimas");
+        assertNotNull(dimas);
+        assertEquals(1, dimas.getListRole().size());
+
     }
 
 }

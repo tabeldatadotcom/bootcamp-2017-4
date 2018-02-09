@@ -43,7 +43,8 @@ public class UserSecurity {
     @OneToMany
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false)
+            inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false),
+            schema = "security"
     )
     private List<RoleSecurity> listRole = new ArrayList<>();
 
