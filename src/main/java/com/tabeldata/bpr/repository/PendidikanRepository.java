@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PendidikanRepository extends CrudRepository<Pendidikan, String> {
 
-    public List<Pendidikan> findAll();
+     List<Pendidikan> findAll();
 }

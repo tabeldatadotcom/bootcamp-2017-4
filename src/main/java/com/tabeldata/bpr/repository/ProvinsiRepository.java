@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProvinsiRepository extends CrudRepository<Provinsi, String> {
 
-    public List<Provinsi> findAll();
+     List<Provinsi> findAll();
 }
