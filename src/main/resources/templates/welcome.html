@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Halaman Utama</title>
+    <script type="application/javascript" src="/static/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="/static/layout.css"/>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css"/>
+
 </head>
-<body>
+<body class="container">
 
 <h3 id="judul">Judul halaman</h3>
 
@@ -25,8 +30,53 @@
     paragraf. as;lfjadlsf
 </p>
 
-<input type="text" />
-<button class="classWarning">Klik saya</button>
+<div class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<div class="form-group">
+    <label>Input Field</label>
+    <input type="text" class="form-control"/>
+</div>
+<div class="row">
+    <div class="form-group col-md-4">
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+    </div>
+
+    <ul class="list-group col-md-4">
+        <li class="list-group-item">Dimas</li>
+        <li class="list-group-item">Spring</li>
+        <li class="list-group-item">Boot</li>
+        <li class="list-group-item">HTML</li>
+        <li class="list-group-item">halo something happen</li>
+        <li class="list-group-item">halo something happen</li>
+        <li class="list-group-item">halo something happen</li>
+        <li class="list-group-item">halo something happen</li>
+        <li class="list-group-item">halo something happen</li>
+        <li class="list-group-item">halo something happen</li>
+    </ul>
+
+    <ul class="col-sm-4">
+        <li>sa;ldkfjdsal</li>
+        <li>sa;ldkfjdsal</li>
+        <li>sa;ldkfjdsal</li>
+        <li>sa;ldkfjdsal</li>
+        <li>sa;ldkfjdsal</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
 
 </body>
 </html>
