@@ -15,7 +15,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    LayoutDialect thymeleafLayoutDialect() {
+    public LayoutDialect thymeleafLayoutDialect() {
         return new LayoutDialect();
     }
 }
