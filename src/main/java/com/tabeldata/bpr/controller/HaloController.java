@@ -8,6 +8,6 @@ public class HaloController {
 
     @GetMapping(value = "/index")
     public String haloController(){
-        return "/welcome";
+        return "/pages/index";
     }
 }
