@@ -56,7 +56,7 @@ public class AgamaController {
         agama.setCreatedBy("admin");
 
         if (bindingResult.hasErrors()) {
-            return "form";
+            return "/pages/agama/form";
         } else {
             agamaService.save(agama);
             redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
