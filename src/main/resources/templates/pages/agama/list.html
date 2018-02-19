@@ -7,6 +7,8 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
+
+    <div class="alert alert-danger" th:if="${notAvailabel} != null" th:text="${notAvailabel}"></div>
     <h1>Daftar Agama</h1>
     <hr/>
 
@@ -32,6 +34,7 @@
             <td th:text="${agama.createdBy}">hardcode</td>
             <td>
                 <a href="#" th:href="@{'/agama/hapus/'+${agama.id}}" class="btn btn-danger">Hapus</a>
+                <a href="#" th:href="@{'/agama/form/'+${agama.id}}" class="btn btn-warning">Edit</a>
             </td>
         </tr>
         </tbody>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -32,6 +33,18 @@ public class AgamaController {
     public String formAgama(Agama agama, ModelMap params) {
         params.addAttribute("agama", agama);
         return "/pages/agama/form";
+    }
+
+    @GetMapping("/form/{id}")
+    public String formAgamaById(@PathVariable("id") String kodeAgama, ModelMap params, RedirectAttributes redirectAttrs) {
+        Agama agama = agamaService.findById(kodeAgama);
+        if (agama != null) {
+            params.addAttribute("agama", agama);
+            return "/pages/agama/form";
+        } else {
+            redirectAttrs.addFlashAttribute("notAvailabel","Data Tidak ditemukan");
+            return "redirect:/agama/list";
+        }
     }
 
     @PostMapping("/submit")
