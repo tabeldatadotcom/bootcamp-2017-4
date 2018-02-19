@@ -30,7 +30,9 @@
             <td th:text="${agama.deskripsi}">Islam</td>
             <td th:text="${agama.createdDate}">2018-02-15 16:10</td>
             <td th:text="${agama.createdBy}">hardcode</td>
-            <td>-</td>
+            <td>
+                <a href="#" th:href="@{'/agama/hapus/'+${agama.id}}" class="btn btn-danger">Hapus</a>
+            </td>
         </tr>
         </tbody>
     </table>
