@@ -48,10 +48,11 @@ public class AgamaController {
     }
 
     @PostMapping("/submit")
-    public String submitAgama(@ModelAttribute Agama agama) {
+    public String submitAgama(@ModelAttribute Agama agama, RedirectAttributes redirectAttributes) {
         agama.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         agama.setCreatedBy("admin");
         agamaService.save(agama);
+        redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
         return "redirect:/agama/list";
     }
 
