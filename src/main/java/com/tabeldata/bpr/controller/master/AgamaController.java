@@ -62,7 +62,6 @@ public class AgamaController {
         agama.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         agama.setCreatedBy("admin");
 
-        console.info("ada error {}", bindingResult.hasErrors());
         if (bindingResult.hasErrors()) {
             return "pages/agama/form";
         }

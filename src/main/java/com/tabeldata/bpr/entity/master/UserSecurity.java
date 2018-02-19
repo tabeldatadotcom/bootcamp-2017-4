@@ -34,6 +34,12 @@ public class UserSecurity {
     @Column(name = "is_active", nullable = false)
     private boolean active;
 
+    @Column(name = "nama_lengkap", nullable = false, length = 25)
+    private String namaLengkap;
+
+    @Column(name = "biodata")
+    private String biodata;
+
     @Column(name = "created_by")
     private String createdBy;
 
