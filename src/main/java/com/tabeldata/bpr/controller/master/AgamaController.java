@@ -2,6 +2,8 @@ package com.tabeldata.bpr.controller.master;
 
 import com.tabeldata.bpr.entity.master.Agama;
 import com.tabeldata.bpr.service.AgamaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,9 +15,13 @@ import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+
+
 @Controller
 @RequestMapping("/agama")
 public class AgamaController {
+
+    private final Logger console = LoggerFactory.getLogger(AgamaController.class);
 
     @Autowired
     private AgamaService agamaService;
@@ -50,18 +56,21 @@ public class AgamaController {
     }
 
     @PostMapping("/submit")
-    public String submitAgama(@Valid @ModelAttribute Agama agama, RedirectAttributes redirectAttributes,
-                              BindingResult bindingResult) {
+    public String submitAgama(@Valid @ModelAttribute Agama agama,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
         agama.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         agama.setCreatedBy("admin");
 
+        console.info("ada error {}", bindingResult.hasErrors());
         if (bindingResult.hasErrors()) {
-            return "/pages/agama/form";
-        } else {
-            agamaService.save(agama);
-            redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
-            return "redirect:/agama/list";
+            return "pages/agama/form";
         }
+
+        agamaService.save(agama);
+        redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
+        return "redirect:/agama/list";
+
     }
 
     @GetMapping("/hapus/{id}")
