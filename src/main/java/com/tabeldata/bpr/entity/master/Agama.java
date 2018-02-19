@@ -9,8 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 /**
@@ -29,7 +32,10 @@ public class Agama {
     @GeneratedValue(generator = "agama_id")
     @Column(name = "kode_agama")
     private String id;
-    
+
+    @NotEmpty
+    @NotNull
+    @Size(min = 5, max = 49, message = "Jumlah karakter tidak boleh lebih dari 5 sampe 49 karakter")
     @Column(name = "nama_agama", nullable = false, unique = true, length = 50)
     private String nama;
     

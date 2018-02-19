@@ -17,6 +17,7 @@
         <div class="form-group">
             <label for="namaAgama">Nama Agama</label>
             <input type="text" id="namaAgama" class="form-control" name="namaAgama" th:field="*{nama}"/>
+            <div th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" class="alert alert-danger">Age Error</div>
         </div>
         <div class="form-group">
             <label for="description">Deskripsi</label>

@@ -5,9 +5,11 @@ import com.tabeldata.bpr.service.AgamaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -42,18 +44,24 @@ public class AgamaController {
             params.addAttribute("agama", agama);
             return "/pages/agama/form";
         } else {
-            redirectAttrs.addFlashAttribute("notAvailabel","Data Tidak ditemukan");
+            redirectAttrs.addFlashAttribute("notAvailabel", "Data Tidak ditemukan");
             return "redirect:/agama/list";
         }
     }
 
     @PostMapping("/submit")
-    public String submitAgama(@ModelAttribute Agama agama, RedirectAttributes redirectAttributes) {
+    public String submitAgama(@Valid @ModelAttribute Agama agama, RedirectAttributes redirectAttributes,
+                              BindingResult bindingResult) {
         agama.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         agama.setCreatedBy("admin");
-        agamaService.save(agama);
-        redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
-        return "redirect:/agama/list";
+
+        if (bindingResult.hasErrors()) {
+            return "form";
+        } else {
+            agamaService.save(agama);
+            redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil disimpan");
+            return "redirect:/agama/list";
+        }
     }
 
     @GetMapping("/hapus/{id}")
