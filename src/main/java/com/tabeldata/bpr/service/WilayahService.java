@@ -24,6 +24,20 @@ public class WilayahService {
         return this.propRepository.findAll();
     }
 
+    @Transactional
+    public KotaKabupaten save(KotaKabupaten kota) {
+        return this.kotaRepository.save(kota);
+    }
+
+    @Transactional
+    public void deleteKotaKabupaten(String id) {
+        this.kotaRepository.delete(id);
+    }
+
+    public KotaKabupaten findKotaKabupatenById(String id) {
+        return this.kotaRepository.findOne(id);
+    }
+
     public List<KotaKabupaten> findAllKotaKabupaten() {
         return this.kotaRepository.findAll();
     }
