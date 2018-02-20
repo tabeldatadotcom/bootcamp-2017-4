@@ -51,12 +51,13 @@ public class KotaKabupatenController {
     }
 
     @PostMapping("/submit")
-    public String submitData(@Valid @ModelAttribute KotaKabupaten kota, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String submitData(@Valid KotaKabupaten kota, BindingResult bindingResult, ModelMap params, RedirectAttributes redirectAttributes) {
         kota.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         kota.setCreatedBy("admin");
 
         if (bindingResult.hasErrors()) {
-            return "pages/kota-kabupaten/form";
+            params.addAttribute("listProvinsi", wilayahService.findAllProvinsi());
+            return "/pages/kota-kabupaten/form";
         }
 
         this.wilayahService.save(kota);
