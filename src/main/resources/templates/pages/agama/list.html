@@ -27,8 +27,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="agama : ${listAgama}">
-            <td th:text="${agama.id}">1</td>
+        <tr th:each="agama, itrStat : ${listAgama}">
+            <td th:text="${itrStat.count}">1</td>
             <td th:text="${agama.nama}">Muslim</td>
             <td th:text="${agama.deskripsi}">Islam</td>
             <td th:text="${agama.createdDate}">2018-02-15 16:10</td>
