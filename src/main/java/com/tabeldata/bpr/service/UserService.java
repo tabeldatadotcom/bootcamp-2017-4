@@ -23,7 +23,7 @@ public class UserService {
         return this.roleRepository.findAll();
     }
 
-    public List<UserSecurity> findUser() {
+    public List<UserSecurity> findUsers() {
         return this.userRepository.findAll();
     }
 

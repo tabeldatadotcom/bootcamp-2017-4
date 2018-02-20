@@ -1,7 +1,6 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.*;
-import com.tabeldata.bpr.repository.NasabahRepository;
 import com.tabeldata.bpr.service.*;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -101,7 +100,7 @@ public class AplikasiBprApplicationTests extends TestCase {
         List<RoleSecurity> roles = this.userService.listRole();
         assertEquals(2, roles.size());
 
-        List<UserSecurity> users = this.userService.findUser();
+        List<UserSecurity> users = this.userService.findUsers();
         assertEquals(2, users.size());
 
         UserSecurity admin = this.userService.findByUsername("admin");
