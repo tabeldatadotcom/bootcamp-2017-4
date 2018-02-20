@@ -8,8 +8,16 @@
 <body>
 <section layout:fragment="content" class="container">
 
-    <div class="alert alert-danger" th:if="${notAvailabel} != null" th:text="${notAvailabel}"></div>
-    <div class="alert alert-success" th:if="${alertSuccess} != null" th:text="${alertSuccess}"></div>
+    <div class="alert alert-danger alert-dismissible" th:if="${notAvailabel} != null" th:text="${notAvailabel}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-success alert-dismissible" th:if="${alertSuccess} != null" th:text="${alertSuccess}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
     <h1>Daftar Agama</h1>
     <hr/>
