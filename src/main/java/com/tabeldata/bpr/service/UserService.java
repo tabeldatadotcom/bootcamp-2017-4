@@ -19,6 +19,10 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    public UserSecurity findById(String id) {
+        return this.userRepository.findOne(id);
+    }
+
     public List<RoleSecurity> listRole() {
         return this.roleRepository.findAll();
     }
@@ -29,6 +33,11 @@ public class UserService {
 
     public UserSecurity findByUsername(String username) {
         return this.userRepository.findByName(username);
+    }
+
+    @Transactional
+    public UserSecurity save(UserSecurity user) {
+        return this.userRepository.save(user);
     }
 
 }
