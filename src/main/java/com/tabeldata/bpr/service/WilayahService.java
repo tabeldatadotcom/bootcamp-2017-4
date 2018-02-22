@@ -90,12 +90,35 @@ public class WilayahService {
         return this.kelurahanRepository.findOne(id);
     }
 
+    public KodePos findKodePosByKelurahanId(String id) {
+        return this.kodePosRepository.findByKelurahanId(id);
+    }
+
     @Transactional
     public void deleteKelurahanById(String id) {
+        KodePos kodePos = this.kodePosRepository.findByKelurahanId(id);
+        if (kodePos != null)
+            this.kodePosRepository.delete(kodePos);
         this.kelurahanRepository.delete(id);
     }
 
     public List<KodePos> findKodepos() {
         return this.kodePosRepository.findAll();
+    }
+
+    @Transactional
+    public KodePos update(KodePos pos) {
+        this.kodePosRepository.updateKodePos(pos.getKodePos(), pos.getId());
+        Kelurahan kel = pos.getKelurahan();
+        this.kelurahanRepository.updateNamaKelurahanAndKecamatanId(kel.getNama(), kel.getKecamatan().getId(), kel.getId());
+
+        return pos;
+    }
+
+    @Transactional
+    public KodePos save(KodePos pos) {
+        Kelurahan kelurahanSave = this.kelurahanRepository.save(pos.getKelurahan());
+        pos.setKelurahan(kelurahanSave);
+        return this.kodePosRepository.save(pos);
     }
 }

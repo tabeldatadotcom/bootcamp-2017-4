@@ -9,7 +9,7 @@
 <section layout:fragment="content" class="container">
     <h1>Form Kota Kabupaten</h1>
 
-    <form th:action="@{/kelurahan/submit}" th:object="${kodepos}" th:method="post" action="/kecamatan/submit"
+    <form th:action="@{/kelurahan/submit-edit}" th:object="${kodepos}" th:method="post" action="/kecamatan/submit"
           method="post">
         <input type="hidden" name="kodeKelurahan" th:field="*{id}"/>
         <input type="hidden" name="kodeKelurahan" th:field="*{kelurahan.id}"/>

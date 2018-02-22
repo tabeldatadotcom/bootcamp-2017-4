@@ -1,8 +1,10 @@
 package com.tabeldata.bpr.controller.master.wilayah;
 
-import com.tabeldata.bpr.entity.master.wilayah.Kecamatan;
 import com.tabeldata.bpr.entity.master.wilayah.Kelurahan;
+import com.tabeldata.bpr.entity.master.wilayah.KodePos;
 import com.tabeldata.bpr.service.WilayahService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +20,8 @@ import java.time.LocalDateTime;
 @RequestMapping("/kelurahan")
 public class KelurahanController {
 
+    private final static Logger console = LoggerFactory.getLogger(KelurahanController.class);
+
     @Autowired
     private WilayahService wilayahService;
 
@@ -28,19 +32,20 @@ public class KelurahanController {
     }
 
     @GetMapping("/form")
-    public String form(ModelMap modelMap, Kelurahan kelurahan) {
+    public String form(ModelMap modelMap, KodePos pos) {
+        pos.setKelurahan(new Kelurahan());
         modelMap.addAttribute("listKecamatan", wilayahService.findAllKecamatan());
-        modelMap.addAttribute("kelurahan", kelurahan);
+        modelMap.addAttribute("kodepos", pos);
         return "/pages/wilayah/kelurahan/form";
     }
 
     @GetMapping("/form/{id}")
-    public String formKotaByID(@PathVariable("id") String kodeKelurahan, ModelMap params, RedirectAttributes redirectAttrs) {
-        Kelurahan kelurahanById = wilayahService.findKelurahanById(kodeKelurahan);
+    public String formKelurahanById(@PathVariable("id") String kodeKelurahan, ModelMap params, RedirectAttributes redirectAttrs) {
+        KodePos kelurahanById = wilayahService.findKodePosByKelurahanId(kodeKelurahan);
         if (kelurahanById != null) {
-            params.addAttribute("kelurahan", kelurahanById);
+            params.addAttribute("kodepos", kelurahanById);
             params.addAttribute("listKecamatan", wilayahService.findAllKecamatan());
-            return "/pages/wilayah/kelurahan/form";
+            return "/pages/wilayah/kelurahan/form-updated";
         } else {
             redirectAttrs.addFlashAttribute("notAvailabel", "Data Tidak ditemukan");
             return "redirect:/kelurahan/list";
@@ -48,20 +53,40 @@ public class KelurahanController {
     }
 
     @PostMapping("/submit")
-    public String submitData(
-            @Valid @ModelAttribute Kelurahan kelurahan,
+    public String submit(
+            @Valid @ModelAttribute KodePos pos,
             BindingResult bindingResult,
             ModelMap params,
             RedirectAttributes redirectAttributes) {
-        kelurahan.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
-        kelurahan.setCreatedBy("admin");
+        pos.getKelurahan().setCreatedBy("admin");
+        pos.getKelurahan().setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        pos.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        pos.setCreatedBy("admin");
+
+        console.info("{}", pos, toString());
+        if (bindingResult.hasErrors()) {
+            params.addAttribute("listKecamatan", wilayahService.findAllKecamatan());
+            return "/pages/wilayah/kelurahan/form";
+        }
+
+        this.wilayahService.save(pos);
+        redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil di simpan!");
+        return "redirect:/kelurahan/list";
+    }
+
+    @PostMapping("/submit-edit")
+    public String submitEdit(
+            @Valid @ModelAttribute KodePos pos,
+            BindingResult bindingResult,
+            ModelMap params,
+            RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             params.addAttribute("listKecamatan", wilayahService.findAllKecamatan());
             return "/pages/wilayah/kelurahan/form";
         }
 
-        this.wilayahService.save(kelurahan);
+        this.wilayahService.update(pos);
         redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil di simpan!");
         return "redirect:/kelurahan/list";
     }
@@ -70,6 +95,6 @@ public class KelurahanController {
     public String deleteData(@PathVariable("kodeKelurahan") String kode, RedirectAttributes redirectAttributes) {
         this.wilayahService.deleteKelurahanById(kode);
         redirectAttributes.addFlashAttribute("alertSuccess", "Data berhasil dihapus!");
-        return "redirect:/kecamatan/list";
+        return "redirect:/kelurahan/list";
     }
 }

@@ -23,7 +23,6 @@ public class KodePos {
     private String id;
 
     // 40526
-    @Size(min = 5, max = 5, message = "Kode Pos tidak valid")
     @Column(nullable = false, name = "kode_pos", length = 5)
     private Integer kodePos;
 
