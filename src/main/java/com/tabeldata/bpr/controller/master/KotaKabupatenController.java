@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.controller.master;
 
-import com.tabeldata.bpr.entity.master.KotaKabupaten;
+import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
 import com.tabeldata.bpr.service.WilayahService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

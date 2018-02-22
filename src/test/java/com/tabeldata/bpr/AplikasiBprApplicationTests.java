@@ -1,12 +1,16 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.*;
+import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
+import com.tabeldata.bpr.entity.master.wilayah.Provinsi;
 import com.tabeldata.bpr.service.*;
 import junit.framework.TestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
@@ -32,6 +36,7 @@ public class AplikasiBprApplicationTests extends TestCase {
     public void contextLoads() {
     }
 
+    @Ignore
     @Test
     public void testSimpanAgama() {
         Agama islam = new Agama(null, "Islam", "Muslim", Timestamp.valueOf(LocalDateTime.now()), "admin");
@@ -80,18 +85,14 @@ public class AplikasiBprApplicationTests extends TestCase {
     @Test
     public void testKotaProvinsi() {
         List<Provinsi> daftarWilayah = this.wilayahService.findAllProvinsi();
-        assertEquals(2, daftarWilayah.size());
+        assertEquals(3, daftarWilayah.size());
 
         Provinsi jawaBarat = this.wilayahService.findProvinsiById("001");
         assertNotNull(jawaBarat);
         assertEquals(2, jawaBarat.getListKota().size());
 
         List<KotaKabupaten> daftarKota = this.wilayahService.findAllKotaKabupaten();
-        assertEquals(3, daftarKota.size());
-
-        daftarKota.forEach((k) -> {
-            System.out.println(k.toString());
-        });
+        assertEquals(5, daftarKota.size());
     }
 
     @Test

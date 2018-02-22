@@ -1,11 +1,10 @@
 package com.tabeldata.bpr.service;
 
-import com.tabeldata.bpr.entity.master.KotaKabupaten;
-import com.tabeldata.bpr.entity.master.Provinsi;
+import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
+import com.tabeldata.bpr.entity.master.wilayah.Provinsi;
 import com.tabeldata.bpr.repository.KotaKabupatenRepository;
 import com.tabeldata.bpr.repository.ProvinsiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
