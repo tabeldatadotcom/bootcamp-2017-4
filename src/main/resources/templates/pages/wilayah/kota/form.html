@@ -15,11 +15,6 @@
             <input type="text" id="kodeKota" class="form-control" name="kodeKota" th:field="*{id}" readonly/>
         </div>
         <div class="form-group">
-            <label for="namaKota">Nama Kota</label>
-            <input type="text" id="namaKota" class="form-control" name="namaKota" th:field="*{nama}"/>
-            <div th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" class="alert alert-danger">Age Error</div>
-        </div>
-        <div class="form-group">
             <label for="provinisiId">Pilih Provinsi</label>
             <select name="provinsiId" id="provinisiId" th:field="*{provinsi.id}" class="form-control">
                 <option value="" th:each="prop : ${listProvinsi}" th:value="${prop.id}"
@@ -30,6 +25,12 @@
                 Error
             </div>
         </div>
+        <div class="form-group">
+            <label for="namaKota">Nama Kota</label>
+            <input type="text" id="namaKota" class="form-control" name="namaKota" th:field="*{nama}"/>
+            <div th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" class="alert alert-danger">Age Error</div>
+        </div>
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Kirim</button>
             <button type="reset" class="btn btn-warning">Reset</button>
