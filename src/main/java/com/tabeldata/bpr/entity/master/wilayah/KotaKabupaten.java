@@ -18,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "kota_kabupaten", schema = "wilayah")
+@ToString(exclude = "listKecamatan")
 public class KotaKabupaten {
 
     @Id

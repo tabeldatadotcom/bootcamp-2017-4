@@ -2,13 +2,14 @@ package com.tabeldata.bpr.controller.master.wilayah;
 
 import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
 import com.tabeldata.bpr.service.WilayahService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -18,8 +19,6 @@ import java.time.LocalDateTime;
 @Controller
 @RequestMapping("/kota")
 public class KotaController {
-
-    private static Logger console = LoggerFactory.getLogger(KotaController.class);
 
     @Autowired
     private WilayahService wilayahService;
