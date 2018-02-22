@@ -89,10 +89,10 @@ public class AplikasiBprApplicationTests extends TestCase {
 
         Provinsi jawaBarat = this.wilayahService.findProvinsiById("001");
         assertNotNull(jawaBarat);
-        assertEquals(2, jawaBarat.getListKota().size());
+        assertEquals(1, jawaBarat.getListKota().size());
 
         List<KotaKabupaten> daftarKota = this.wilayahService.findAllKotaKabupaten();
-        assertEquals(5, daftarKota.size());
+        assertEquals(4, daftarKota.size());
     }
 
     @Test

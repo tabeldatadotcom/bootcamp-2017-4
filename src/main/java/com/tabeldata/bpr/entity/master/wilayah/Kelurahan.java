@@ -3,20 +3,16 @@ package com.tabeldata.bpr.entity.master.wilayah;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "kelurahan", schema = "wilayah")
 @Data
-@ToString(exclude = "listKecamatan")
 public class Kelurahan {
 
     @Id
@@ -30,10 +26,8 @@ public class Kelurahan {
     private Timestamp createdDate;
     @Column(name = "created_by", length = 20)
     private String createdBy;
-    @ManyToOne()
-    @JoinColumn(name = "kota_id", nullable = false)
-    private KotaKabupaten kota;
-    @OneToMany(mappedBy = "kelurahan")
-    private List<Kecamatan> listKecamatan = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "kecamatan_id", nullable = false)
+    private Kecamatan kecamatan;
 
 }

@@ -7,6 +7,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +29,9 @@ public class Kecamatan {
     @Column(name = "created_by", length = 20)
     private String createdBy;
     @ManyToOne
-    @JoinColumn(name = "kelurahan_id", nullable = false)
-    private Kelurahan kelurahan;
+    @JoinColumn(name = "kota_id", nullable = false)
+    private KotaKabupaten kota;
+    @OneToMany(mappedBy = "kecamatan")
+    private List<Kelurahan> listKelurahan = new ArrayList<>();
+
 }

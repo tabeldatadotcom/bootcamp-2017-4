@@ -18,7 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "kota_kabupaten", schema = "wilayah")
-@ToString(exclude = "listKelurahan")
 public class KotaKabupaten {
 
     @Id
@@ -38,5 +37,5 @@ public class KotaKabupaten {
     @JoinColumn(name = "provinsi_id", nullable = false)
     private Provinsi provinsi;
     @OneToMany(mappedBy = "kota")
-    private List<Kelurahan> listKelurahan = new ArrayList<>();
+    private List<Kecamatan> listKecamatan = new ArrayList<>();
 }
