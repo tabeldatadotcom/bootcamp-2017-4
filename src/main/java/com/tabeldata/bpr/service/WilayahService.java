@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.service;
 
-import com.tabeldata.bpr.entity.master.wilayah.*;
+import com.tabeldata.bpr.entity.wilayah.*;
 import com.tabeldata.bpr.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
-package com.tabeldata.bpr.entity.master;
+package com.tabeldata.bpr.entity.nasabah;
 
+import com.tabeldata.bpr.entity.wilayah.KodePos;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -21,6 +22,11 @@ public class Nasabah {
     @Column(name = "nama_lengkap", nullable = false, length = 50)
     private String namaLengkap;
 
-    @Column(name = "alamat_rumah")
-    private String alamat;
+    @Lob
+    @Column(name = "alamat_identitas")
+    private String alamatIdentitas;
+
+    @OneToOne
+    @JoinColumn(name = "kodepos_identatitas")
+    private KodePos identitas;
 }

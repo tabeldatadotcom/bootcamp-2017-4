@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.repository;
 
-import com.tabeldata.bpr.entity.master.wilayah.Kecamatan;
+import com.tabeldata.bpr.entity.wilayah.Kecamatan;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

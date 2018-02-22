@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.repository;
 
-import com.tabeldata.bpr.entity.master.RoleSecurity;
+import com.tabeldata.bpr.entity.security.RoleSecurity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

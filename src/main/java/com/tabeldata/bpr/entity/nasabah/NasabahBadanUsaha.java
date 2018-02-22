@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.entity.master;
+package com.tabeldata.bpr.entity.nasabah;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

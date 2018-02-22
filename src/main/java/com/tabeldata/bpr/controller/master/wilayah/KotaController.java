@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.controller.master.wilayah;
 
-import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
+import com.tabeldata.bpr.entity.wilayah.KotaKabupaten;
 import com.tabeldata.bpr.service.WilayahService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

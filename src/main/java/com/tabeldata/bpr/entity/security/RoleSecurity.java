@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.entity.master;
+package com.tabeldata.bpr.entity.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

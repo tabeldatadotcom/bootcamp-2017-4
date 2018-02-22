@@ -1,7 +1,7 @@
 package com.tabeldata.bpr.controller.master.wilayah;
 
-import com.tabeldata.bpr.entity.master.wilayah.Kelurahan;
-import com.tabeldata.bpr.entity.master.wilayah.KodePos;
+import com.tabeldata.bpr.entity.wilayah.Kelurahan;
+import com.tabeldata.bpr.entity.wilayah.KodePos;
 import com.tabeldata.bpr.service.WilayahService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

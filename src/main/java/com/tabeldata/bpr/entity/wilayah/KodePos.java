@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.entity.master.wilayah;
+package com.tabeldata.bpr.entity.wilayah;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Data

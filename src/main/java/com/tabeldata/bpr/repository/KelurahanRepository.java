@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.repository;
 
-import com.tabeldata.bpr.entity.master.wilayah.Kelurahan;
+import com.tabeldata.bpr.entity.wilayah.Kelurahan;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

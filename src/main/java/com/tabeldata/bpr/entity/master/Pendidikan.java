@@ -11,25 +11,23 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "master_pendidikan")
+@Table(name = "pendidikan", schema = "master")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Pendidikan {
 
     @Id
-    @Column(name = "kode_pendidikan", nullable = false, unique = true, length = 5)
+    @Column(name = "id", nullable = false, unique = true, length = 5)
     private String id;
 
-    @Column(name = "nama_pendidikan", nullable = false, length = 50)
+    @Column(name = "nama", nullable = false, length = 150)
     private String nama;
 
     @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
 
-    @Column(name = "created_by")
+    @Column(name = "created_by", length = 20)
     private String createdBy;
 
-    @Column(name = "is_active")
-    private Boolean active;
 }

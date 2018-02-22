@@ -1,7 +1,7 @@
 package com.tabeldata.bpr.service;
 
-import com.tabeldata.bpr.entity.master.RoleSecurity;
-import com.tabeldata.bpr.entity.master.UserSecurity;
+import com.tabeldata.bpr.entity.security.RoleSecurity;
+import com.tabeldata.bpr.entity.security.UserSecurity;
 import com.tabeldata.bpr.repository.RoleRepository;
 import com.tabeldata.bpr.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

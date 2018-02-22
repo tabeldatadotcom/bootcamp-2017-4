@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.controller.security;
 
-import com.tabeldata.bpr.entity.master.UserSecurity;
+import com.tabeldata.bpr.entity.security.UserSecurity;
 import com.tabeldata.bpr.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

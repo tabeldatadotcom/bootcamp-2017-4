@@ -17,34 +17,33 @@ import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 /**
- *
  * @author dimmaryanto93
  */
 @Entity
-@Table(name = "master_agama")
+@Table(name = "agama", schema = "master")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Agama {
-    
+
     @Id
     @GenericGenerator(name = "agama_id", strategy = "uuid2")
     @GeneratedValue(generator = "agama_id")
-    @Column(name = "kode_agama")
+    @Column(name = "id", length = 64, nullable = false, unique = true)
     private String id;
 
     @NotEmpty
     @NotNull
     @Size(min = 5, max = 49, message = "Jumlah karakter tidak boleh lebih dari 5 sampe 49 karakter")
-    @Column(name = "nama_agama", nullable = false, unique = true, length = 50)
+    @Column(name = "nama", nullable = false, unique = true, length = 50)
     private String nama;
-    
+
     @Column(name = "deskripsi")
     private String deskripsi;
-    
+
     @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
     @Column(name = "created_by", length = 50)
     private String createdBy;
-    
+
 }

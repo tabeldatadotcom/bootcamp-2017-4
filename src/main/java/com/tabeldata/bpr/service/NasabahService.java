@@ -1,8 +1,8 @@
 package com.tabeldata.bpr.service;
 
-import com.tabeldata.bpr.entity.master.Nasabah;
-import com.tabeldata.bpr.entity.master.NasabahBadanUsaha;
-import com.tabeldata.bpr.entity.master.NasabahPerorangan;
+import com.tabeldata.bpr.entity.nasabah.Nasabah;
+import com.tabeldata.bpr.entity.nasabah.NasabahBadanUsaha;
+import com.tabeldata.bpr.entity.nasabah.NasabahPerorangan;
 import com.tabeldata.bpr.repository.NasabahBadanUsahaRepository;
 import com.tabeldata.bpr.repository.NasabahPeroranganRepository;
 import com.tabeldata.bpr.repository.NasabahRepository;

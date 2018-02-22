@@ -1,7 +1,6 @@
 package com.tabeldata.bpr.repository;
 
-import com.tabeldata.bpr.entity.master.wilayah.KodePos;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.tabeldata.bpr.entity.wilayah.KodePos;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

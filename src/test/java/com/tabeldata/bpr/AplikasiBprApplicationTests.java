@@ -1,8 +1,13 @@
 package com.tabeldata.bpr;
 
 import com.tabeldata.bpr.entity.master.*;
-import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
-import com.tabeldata.bpr.entity.master.wilayah.Provinsi;
+import com.tabeldata.bpr.entity.nasabah.Nasabah;
+import com.tabeldata.bpr.entity.nasabah.NasabahBadanUsaha;
+import com.tabeldata.bpr.entity.nasabah.NasabahPerorangan;
+import com.tabeldata.bpr.entity.security.RoleSecurity;
+import com.tabeldata.bpr.entity.security.UserSecurity;
+import com.tabeldata.bpr.entity.wilayah.KotaKabupaten;
+import com.tabeldata.bpr.entity.wilayah.Provinsi;
 import com.tabeldata.bpr.service.*;
 import junit.framework.TestCase;
 import org.junit.Ignore;
@@ -10,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
@@ -114,13 +118,14 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     }
 
+    @Ignore
     @Test
     public void testSimpanNasabah() {
         NasabahPerorangan dimas = new NasabahPerorangan();
         dimas.setNamaLengkap("Dimas Maryanto");
         dimas.setJenisKelamin("L");
         dimas.setNomorIdentitas("6212423408234");
-        dimas.setAlamat("Jl. Bukit indah no B8");
+//        dimas.setAlamat("Jl. Bukit indah no B8");
         dimas = this.nasabahService.save(dimas);
         assertNotNull(dimas.getId());
 
@@ -132,7 +137,7 @@ public class AplikasiBprApplicationTests extends TestCase {
         NasabahBadanUsaha tabeldata = new NasabahBadanUsaha();
         tabeldata.setNamaLengkap("Tabel Data Informatika");
         tabeldata.setNomorNpwp("1242421423");
-        tabeldata.setAlamat("Jl. margawangi raya no 8");
+//        tabeldata.setAlamat("Jl. margawangi raya no 8");
         tabeldata = this.nasabahService.save(tabeldata);
         assertNotNull(tabeldata.getId());
 //        this.nasabahService.delete(tabeldata);
