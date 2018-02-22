@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
@@ -27,11 +28,13 @@ public class KodePos {
     private Integer kodePos;
 
     @ManyToOne
-    @JoinColumn(name = "kecamatan_id")
-    private Kecamatan kecamatan;
-
-    @ManyToOne
     @JoinColumn(name = "kelurahan_id")
     private Kelurahan kelurahan;
+
+    @Column(name = "created_date", nullable = false)
+    private Timestamp createdDate;
+
+    @Column(name = "created_by", length = 20)
+    private String createdBy;
 
 }

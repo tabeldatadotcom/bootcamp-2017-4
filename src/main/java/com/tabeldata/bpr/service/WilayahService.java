@@ -1,13 +1,7 @@
 package com.tabeldata.bpr.service;
 
-import com.tabeldata.bpr.entity.master.wilayah.Kecamatan;
-import com.tabeldata.bpr.entity.master.wilayah.Kelurahan;
-import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
-import com.tabeldata.bpr.entity.master.wilayah.Provinsi;
-import com.tabeldata.bpr.repository.KecamatanRepository;
-import com.tabeldata.bpr.repository.KelurahanRepository;
-import com.tabeldata.bpr.repository.KotaKabupatenRepository;
-import com.tabeldata.bpr.repository.ProvinsiRepository;
+import com.tabeldata.bpr.entity.master.wilayah.*;
+import com.tabeldata.bpr.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +20,8 @@ public class WilayahService {
     private KecamatanRepository kecamatanRepository;
     @Autowired
     private KelurahanRepository kelurahanRepository;
+    @Autowired
+    private KodePosRepository kodePosRepository;
 
     public List<Provinsi> findAllProvinsi() {
         return this.propRepository.findAll();
@@ -97,5 +93,9 @@ public class WilayahService {
     @Transactional
     public void deleteKelurahanById(String id) {
         this.kelurahanRepository.delete(id);
+    }
+
+    public List<KodePos> findKodepos() {
+        return this.kodePosRepository.findAll();
     }
 }
