@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.controller.master;
+package com.tabeldata.bpr.controller.master.wilayah;
 
 import com.tabeldata.bpr.entity.master.wilayah.KotaKabupaten;
 import com.tabeldata.bpr.service.WilayahService;
@@ -17,9 +17,9 @@ import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/kota")
-public class KotaKabupatenController {
+public class KotaController {
 
-    private static Logger console = LoggerFactory.getLogger(KotaKabupatenController.class);
+    private static Logger console = LoggerFactory.getLogger(KotaController.class);
 
     @Autowired
     private WilayahService wilayahService;
@@ -27,14 +27,14 @@ public class KotaKabupatenController {
     @GetMapping(value = {"/", "/list"})
     public String listHtml(ModelMap params) {
         params.addAttribute("listKota", wilayahService.findAllKotaKabupaten());
-        return "/pages/kota-kabupaten/list";
+        return "/pages/wilayah/kota/list";
     }
 
     @GetMapping("/form")
     public String form(ModelMap modelMap, KotaKabupaten kota) {
         modelMap.addAttribute("listProvinsi", wilayahService.findAllProvinsi());
         modelMap.addAttribute("kotaKabupaten", kota);
-        return "/pages/kota-kabupaten/form";
+        return "/pages/wilayah/kota/form";
     }
 
     @GetMapping("/form/{id}")
@@ -43,7 +43,7 @@ public class KotaKabupatenController {
         if (kotaKabupatenById != null) {
             params.addAttribute("kotaKabupaten", kotaKabupatenById);
             params.addAttribute("listProvinsi", wilayahService.findAllProvinsi());
-            return "/pages/kota-kabupaten/form";
+            return "/pages/wilayah/kota/form";
         } else {
             redirectAttrs.addFlashAttribute("notAvailabel", "Data Tidak ditemukan");
             return "redirect:/kota/list";
@@ -57,7 +57,7 @@ public class KotaKabupatenController {
 
         if (bindingResult.hasErrors()) {
             params.addAttribute("listProvinsi", wilayahService.findAllProvinsi());
-            return "/pages/kota-kabupaten/form";
+            return "/pages/wilayah/kota/form";
         }
 
         this.wilayahService.save(kota);

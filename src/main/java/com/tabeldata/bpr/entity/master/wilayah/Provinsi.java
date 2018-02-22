@@ -29,7 +29,7 @@ public class Provinsi {
     @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
     @Column(name = "created_by", length = 20)
-    private String createBy;
+    private String createdBy;
     @OneToMany(mappedBy = "provinsi")
     private List<KotaKabupaten> listKota = new ArrayList<>();
 }

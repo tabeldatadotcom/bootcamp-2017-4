@@ -29,8 +29,18 @@ public class WilayahService {
     }
 
     @Transactional
+    public Provinsi save(Provinsi provinsi) {
+        return this.propRepository.save(provinsi);
+    }
+
+    @Transactional
     public void deleteKotaKabupaten(String id) {
         this.kotaRepository.delete(id);
+    }
+
+    @Transactional
+    public void deleteProvinsi(String id) {
+        this.propRepository.delete(id);
     }
 
     public KotaKabupaten findKotaKabupatenById(String id) {
