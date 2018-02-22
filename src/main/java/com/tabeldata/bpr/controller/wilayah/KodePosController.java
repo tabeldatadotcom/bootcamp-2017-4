@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.controller.master.wilayah;
+package com.tabeldata.bpr.controller.wilayah;
 
 import com.tabeldata.bpr.service.WilayahService;
 import org.springframework.beans.factory.annotation.Autowired;

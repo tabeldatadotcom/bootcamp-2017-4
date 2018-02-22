@@ -43,14 +43,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#" th:href="@{/user/security/list}">User Management</a></li>
+                <li><a href="#" th:href="@{/user/security/list}">My Profile</a></li>
+                <li><a href="#" th:href="@{/user/security/list}">Logout</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search..."/>
-            </form>
         </div>
     </div>
 </nav>
@@ -60,13 +56,14 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li>
-                    <a href="#" th:href="@{/user/security/list}">User Management</a>
+                    <a href="#">Master</a>
+                    <ul>
+                        <li><a href="#" th:href="@{/agama/list}">Data Agama</a></li>
+                        <li><a href="#" th:href="@{/pendidikan/list}">Data Pendidikan</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#" th:href="@{/agama/list}">Master Agama</a>
-                </li>
-                <li>
-                    <a href="#" class="disabled">Master Wilayah</a>
+                    <a href="#" class="disabled">Wilayah</a>
                     <ul>
                         <li>
                             <a href="#" th:href="@{/provinsi/list}">Data Provinsi</a>
@@ -83,6 +80,15 @@
                         <li>
                             <a href="#" th:href="@{/kodepos/list}">Data Kode Pos</a>
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Produk</a>
+                    <ul>
+                        <li><a href="#">Produk Tabungan</a></li>
+                        <li><a href="#">Produk Deposito</a></li>
+                        <li><a href="#">Produk Kredit</a></li>
+
                     </ul>
                 </li>
                 <li>

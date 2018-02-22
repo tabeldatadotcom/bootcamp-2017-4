@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.controller.master.wilayah;
+package com.tabeldata.bpr.controller.wilayah;
 
 import com.tabeldata.bpr.entity.wilayah.Kelurahan;
 import com.tabeldata.bpr.entity.wilayah.KodePos;
