@@ -1,6 +1,7 @@
 package com.tabeldata.bpr;
 
-import com.tabeldata.bpr.entity.master.*;
+import com.tabeldata.bpr.entity.master.Agama;
+import com.tabeldata.bpr.entity.master.Pendidikan;
 import com.tabeldata.bpr.entity.nasabah.Nasabah;
 import com.tabeldata.bpr.entity.nasabah.NasabahBadanUsaha;
 import com.tabeldata.bpr.entity.nasabah.NasabahPerorangan;
