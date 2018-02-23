@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 public class NasabahService {
@@ -20,6 +22,11 @@ public class NasabahService {
     private NasabahPeroranganRepository peroranganRepository;
     @Autowired
     private NasabahBadanUsahaRepository badanUsahaRepository;
+
+
+    public List<Nasabah> findAll(){
+        return this.nasabahRepository.findAll();
+    }
 
     @Transactional
     public NasabahPerorangan save(NasabahPerorangan nasabah) {

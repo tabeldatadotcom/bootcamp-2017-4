@@ -1,10 +1,12 @@
 package com.tabeldata.bpr.entity.master.kriteria;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "kriteria_tabungan", schema = "master")
 public class ProdukTabungan {

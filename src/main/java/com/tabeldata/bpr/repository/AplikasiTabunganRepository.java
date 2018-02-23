@@ -1,7 +1,18 @@
 package com.tabeldata.bpr.repository;
 
 import com.tabeldata.bpr.entity.aplikasi.Tabungan;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public interface AplikasiTabunganRepository extends CrudRepository<Tabungan, String> {
+
+    List<Tabungan> findAll();
+
+    @Modifying
+    @Query("update Tabungan tab set tab.saldo = (tab.saldo + ?1) where tab.id = ?2")
+    int updateSaldoTabungan(BigDecimal saldo, String idTabungan);
 }
