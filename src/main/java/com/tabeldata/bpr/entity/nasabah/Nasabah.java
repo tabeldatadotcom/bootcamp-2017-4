@@ -22,7 +22,6 @@ public class Nasabah {
     @Column(name = "nama_lengkap", nullable = false, length = 50)
     private String namaLengkap;
 
-    @Lob
     @Column(name = "alamat_identitas")
     private String alamatIdentitas;
 

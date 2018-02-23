@@ -119,6 +119,16 @@ public class AplikasiBprApplicationTests extends TestCase {
 
     }
 
+    @Test
+    public void testNasabahPerorangan() {
+        NasabahPerorangan nasabah = this.nasabahService.findPeroranganById("dimas");
+        assertNotNull(nasabah);
+        assertEquals("Dimas Maryanto", nasabah.getNamaLengkap());
+        assertEquals("620423423433", nasabah.getNomorIdentitas());
+        assertNull(nasabah.getDomisili());
+        assertEquals("001", nasabah.getIdentitas().getId());
+    }
+
     @Ignore
     @Test
     public void testSimpanNasabah() {

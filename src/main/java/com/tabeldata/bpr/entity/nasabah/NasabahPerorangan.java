@@ -7,15 +7,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@DiscriminatorValue(value = "P")
 public class NasabahPerorangan extends Nasabah {
 
     @Column(name = "nomor_identitas", length = 64)

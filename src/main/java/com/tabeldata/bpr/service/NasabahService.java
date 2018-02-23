@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly = false)
+@Transactional(readOnly = true)
 public class NasabahService {
 
     @Autowired
@@ -20,12 +20,6 @@ public class NasabahService {
     private NasabahPeroranganRepository peroranganRepository;
     @Autowired
     private NasabahBadanUsahaRepository badanUsahaRepository;
-
-
-    @Transactional
-    public Nasabah save(Nasabah nasabah) {
-        return this.nasabahRepository.save(nasabah);
-    }
 
     @Transactional
     public NasabahPerorangan save(NasabahPerorangan nasabah) {
@@ -49,6 +43,5 @@ public class NasabahService {
     public NasabahBadanUsaha findBadanUsahaById(String id) {
         return this.badanUsahaRepository.findOne(id);
     }
-
 
 }
