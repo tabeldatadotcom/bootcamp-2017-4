@@ -40,7 +40,7 @@ public class MutasiTabungan {
     private String keterangan;
 
     @Column(name = "created_date", nullable = false)
-    private Timestamp created_date;
+    private Timestamp createdDate;
 
     @Column(name = "created_by")
     private String cratedBy;

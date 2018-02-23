@@ -59,7 +59,7 @@ public class TabunganController {
 
         MutasiTabungan setoranAwal = new MutasiTabungan();
         setoranAwal.setCratedBy(tabungan.getCreatedBy());
-        setoranAwal.setCreated_date(tabungan.getCreatedDate());
+        setoranAwal.setCreatedDate(tabungan.getCreatedDate());
         setoranAwal.setTanggal(tabungan.getOpening());
         setoranAwal.setCredit(new BigDecimal(httpServletRequest.getParameter("setoranAwal")));
         setoranAwal.setDebet(BigDecimal.ZERO);
