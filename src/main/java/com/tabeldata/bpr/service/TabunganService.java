@@ -23,6 +23,10 @@ public class TabunganService {
     @Autowired
     private MutasiTabunganRepository mutasiRepository;
 
+    public Tabungan findById(String id) {
+        return this.tabunganRepository.findOne(id);
+    }
+
     public List<Tabungan> findAll() {
         return this.tabunganRepository.findAll();
     }

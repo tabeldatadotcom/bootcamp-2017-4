@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,8 +71,6 @@ public class TabunganController {
         setoranAwal.setKeterangan("SETORAN_TABUNGAN");
         setoranAwal.setTabungan(tabungan);
 
-        console.info("{} : {}", tabungan.toString(), setoranAwal);
-
         if (bindingResult.hasErrors()) {
             params.addAttribute("listNasabah", nasabahService.findAll());
             params.addAttribute("listProduct", tabunganService.findKriteriaProduk());
@@ -84,5 +79,17 @@ public class TabunganController {
 
         this.tabunganService.save(setoranAwal);
         return "redirect:/aplikasi/tabungan/list";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detailTabungan(@PathVariable String id, ModelMap params) {
+        Tabungan tabungan = this.tabunganService.findById(id);
+        if (tabungan != null) {
+            params.addAttribute("tabungan", tabungan);
+            params.addAttribute("nasabah", tabungan.getNasabah());
+            return "/pages/aplikasi/tabungan/detail-tabungan";
+        } else {
+            return "redirect:/aplikasi/tabungan/list";
+        }
     }
 }

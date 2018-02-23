@@ -34,6 +34,7 @@
             <td>Tanggal Opening</td>
             <td>Jenis Tabungan</td>
             <td>Created By</td>
+            <td>Detail Tabungan</td>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +45,10 @@
             <td th:text="${tab.opening}">Jawa Barat</td>
             <td th:text="${tab.kriteriaProduk.nama}">Jawa Barat</td>
             <td th:text="${tab.createdBy}">Jawa Barat</td>
+            <td>
+                <a href="#" th:href="@{'/aplikasi/tabungan/detail/'+${tab.id}}" class="btn btn-danger">Hapus</a>
+                <!--<a href="#" th:href="@{'/kecamatan/form/'+${kec.id}}" class="btn btn-warning">Edit</a>-->
+            </td>
         </tr>
         </tbody>
     </table>

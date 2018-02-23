@@ -36,7 +36,6 @@ public class MutasiTabungan {
     @Column(name = "tanggal_transaksi", nullable = false)
     private Date tanggal;
 
-    @Lob
     private String keterangan;
 
     @Column(name = "created_date", nullable = false)
