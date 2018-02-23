@@ -15,4 +15,8 @@ public interface AplikasiTabunganRepository extends CrudRepository<Tabungan, Str
     @Modifying
     @Query("update Tabungan tab set tab.saldo = (tab.saldo + ?1) where tab.id = ?2")
     int updateSaldoTabungan(BigDecimal saldo, String idTabungan);
+
+    @Modifying
+    @Query("update Tabungan tab set tab.saldo = (tab.saldo - ?1) where tab.id = ?2")
+    int updateSaldoTabunganTarik(BigDecimal saldo, String idTabungan);
 }

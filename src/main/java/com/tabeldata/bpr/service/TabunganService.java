@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -46,4 +50,17 @@ public class TabunganService {
     }
 
 
+    @Transactional
+    public MutasiTabungan setoran(MutasiTabungan mutasi) {
+        this.mutasiRepository.save(mutasi);
+        this.tabunganRepository.updateSaldoTabungan(mutasi.getCredit(), mutasi.getTabungan().getId());
+        return mutasi;
+    }
+
+    @Transactional
+    public MutasiTabungan tarikan(MutasiTabungan mutasi) {
+        this.mutasiRepository.save(mutasi);
+        this.tabunganRepository.updateSaldoTabunganTarik(mutasi.getDebet(), mutasi.getTabungan().getId());
+        return mutasi;
+    }
 }

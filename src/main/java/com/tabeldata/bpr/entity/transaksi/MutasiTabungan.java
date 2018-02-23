@@ -42,5 +42,5 @@ public class MutasiTabungan {
     private Timestamp createdDate;
 
     @Column(name = "created_by")
-    private String cratedBy;
+    private String createdBy;
 }

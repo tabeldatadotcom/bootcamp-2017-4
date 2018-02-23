@@ -61,7 +61,7 @@ public class TabunganController {
         tabungan.setSaldo(BigDecimal.ZERO);
 
         MutasiTabungan setoranAwal = new MutasiTabungan();
-        setoranAwal.setCratedBy(tabungan.getCreatedBy());
+        setoranAwal.setCreatedBy(tabungan.getCreatedBy());
         setoranAwal.setCreatedDate(tabungan.getCreatedDate());
         setoranAwal.setTanggal(tabungan.getOpening());
 
@@ -92,4 +92,55 @@ public class TabunganController {
             return "redirect:/aplikasi/tabungan/list";
         }
     }
+
+    @GetMapping("/setor/{id}")
+    public String setoranForm(@ModelAttribute MutasiTabungan mutasiTabungan, @PathVariable("id") String idTabungan, ModelMap params) {
+        Tabungan tabungan = this.tabunganService.findById(idTabungan);
+        mutasiTabungan.setTabungan(tabungan);
+        params.addAttribute("mutasi", mutasiTabungan);
+        return "/pages/aplikasi/tabungan/form-setor";
+    }
+
+    @PostMapping("/setor/submit")
+    public String setoranSubmit(
+            @Valid @ModelAttribute MutasiTabungan mutasi,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
+        Tabungan tabungan = mutasi.getTabungan();
+        mutasi.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        mutasi.setCreatedBy("admin");
+        mutasi.setKeterangan("SETORAN_TABUNGAN");
+        mutasi.setDebet(BigDecimal.ZERO);
+        mutasi.setSaldo(mutasi.getCredit().add(tabungan.getSaldo()));
+        mutasi.setTanggal(Date.valueOf(LocalDate.now()));
+        this.tabunganService.setoran(mutasi);
+        console.info("{}", mutasi.toString());
+        return "redirect:/aplikasi/tabungan/detail/" + mutasi.getTabungan().getId();
+    }
+
+    @GetMapping("/tarik/{id}")
+    public String tarikanForm(@ModelAttribute MutasiTabungan mutasiTabungan, @PathVariable("id") String idTabungan, ModelMap params) {
+        Tabungan tabungan = this.tabunganService.findById(idTabungan);
+        mutasiTabungan.setTabungan(tabungan);
+        params.addAttribute("mutasi", mutasiTabungan);
+        return "/pages/aplikasi/tabungan/form-tarik";
+    }
+
+    @PostMapping("/tarik/submit")
+    public String tarikSubmit(
+            @Valid @ModelAttribute MutasiTabungan mutasi,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
+        Tabungan tabungan = mutasi.getTabungan();
+        mutasi.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        mutasi.setCreatedBy("admin");
+        mutasi.setKeterangan("PENCAIRAN_TABUNGAN");
+        mutasi.setCredit(BigDecimal.ZERO);
+        mutasi.setSaldo(tabungan.getSaldo().subtract(mutasi.getDebet()));
+        mutasi.setTanggal(Date.valueOf(LocalDate.now()));
+        this.tabunganService.tarikan(mutasi);
+        return "redirect:/aplikasi/tabungan/detail/" + mutasi.getTabungan().getId();
+    }
+
+
 }
