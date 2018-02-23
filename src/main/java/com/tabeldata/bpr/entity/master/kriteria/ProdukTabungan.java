@@ -1,4 +1,4 @@
-package com.tabeldata.bpr.entity.master;
+package com.tabeldata.bpr.entity.master.kriteria;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "kriteria_tabungan", schema = "master")
-public class KriteriaProdukTabungan {
+public class ProdukTabungan {
 
     @Id
     @GenericGenerator(name = "uuid_kriteri_tabungan", strategy = "uuid2")

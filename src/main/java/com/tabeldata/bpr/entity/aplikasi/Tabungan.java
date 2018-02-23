@@ -1,6 +1,6 @@
 package com.tabeldata.bpr.entity.aplikasi;
 
-import com.tabeldata.bpr.entity.master.KriteriaProdukTabungan;
+import com.tabeldata.bpr.entity.master.kriteria.ProdukTabungan;
 import com.tabeldata.bpr.entity.nasabah.Nasabah;
 import com.tabeldata.bpr.entity.transaksi.MutasiTabungan;
 import lombok.Data;
@@ -39,7 +39,7 @@ public class Tabungan {
 
     @OneToOne
     @JoinColumn(name = "kriteria_id", nullable = false)
-    private KriteriaProdukTabungan kriteriaProduk;
+    private ProdukTabungan kriteriaProduk;
 
     @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
