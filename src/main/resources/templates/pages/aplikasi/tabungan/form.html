@@ -16,6 +16,9 @@
             <label for="nomorRekening">Nomor Rekening</label>
             <input type="text" id="nomorRekening" class="form-control" name="nomorRekening"
                    th:field="*{nomorRekening}"/>
+            <div th:if="${#fields.hasErrors('nomorRekening')}" th:errors="*{nomorRekening}" class="alert alert-danger">Age
+                Error
+            </div>
         </div>
         <div class="form-group">
             <label for="kotaId">Pilih Nasabah</label>

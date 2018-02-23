@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -50,8 +51,13 @@ public class TabunganController {
 
     @PostMapping("/submit")
     public String submitTabungan(
-            @ModelAttribute Tabungan tabungan, BindingResult bindingResult,
-            RedirectAttributes redirectAttributes, HttpServletRequest httpServletRequest) {
+            @Valid @ModelAttribute Tabungan tabungan, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, HttpServletRequest httpServletRequest, ModelMap params) {
+        String saldoAwalText = httpServletRequest.getParameter("setoranAwal");
+        BigDecimal saldoAwal = saldoAwalText != null && !saldoAwalText.isEmpty() ?
+                new BigDecimal(httpServletRequest.getParameter("setoranAwal")) :
+                BigDecimal.ZERO;
+
         tabungan.setCreatedBy("admin");
         tabungan.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         tabungan.setOpening(Date.valueOf(LocalDate.now()));
@@ -61,13 +67,21 @@ public class TabunganController {
         setoranAwal.setCratedBy(tabungan.getCreatedBy());
         setoranAwal.setCreatedDate(tabungan.getCreatedDate());
         setoranAwal.setTanggal(tabungan.getOpening());
-        setoranAwal.setCredit(new BigDecimal(httpServletRequest.getParameter("setoranAwal")));
+
+        setoranAwal.setCredit(saldoAwal);
         setoranAwal.setDebet(BigDecimal.ZERO);
         setoranAwal.setSaldo(setoranAwal.getCredit());
         setoranAwal.setKeterangan("SETORAN_TABUNGAN");
         setoranAwal.setTabungan(tabungan);
 
         console.info("{} : {}", tabungan.toString(), setoranAwal);
+
+        if (bindingResult.hasErrors()) {
+            params.addAttribute("listNasabah", nasabahService.findAll());
+            params.addAttribute("listProduct", tabunganService.findKriteriaProduk());
+            return "pages/aplikasi/tabungan/form";
+        }
+
         this.tabunganService.save(setoranAwal);
         return "redirect:/aplikasi/tabungan/list";
     }

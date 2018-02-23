@@ -5,8 +5,11 @@ import com.tabeldata.bpr.entity.nasabah.Nasabah;
 import com.tabeldata.bpr.entity.transaksi.MutasiTabungan;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -24,9 +27,12 @@ public class Tabungan {
     @Column(name = "id", nullable = false, unique = true, length = 64)
     private String id;
 
+    @NotEmpty
+    @Size(max = 15, min = 15, message = "nomor rekening harus 15 karaketer")
     @Column(name = "nomor_rekening", nullable = false, unique = true, length = 15)
     private String nomorRekening;
 
+    @NotNull(message = "nasabah belum dipilih")
     @OneToOne
     @JoinColumn(name = "nasabah_id", nullable = false)
     private Nasabah nasabah;
@@ -37,6 +43,7 @@ public class Tabungan {
     @Column(nullable = false)
     private BigDecimal saldo;
 
+    @NotNull(message = "kriteria produk belum dipilih")
     @OneToOne
     @JoinColumn(name = "kriteria_id", nullable = false)
     private ProdukTabungan kriteriaProduk;
